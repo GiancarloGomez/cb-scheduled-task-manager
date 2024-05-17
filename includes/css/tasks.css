@@ -1,0 +1,11 @@
+#dt-tasks_wrapper{
+	.dt-length select {
+		margin-right:0 !important;
+	}
+	th {
+		white-space: nowrap;
+	}
+	[data-task] {
+		cursor: pointer;
+	}
+}

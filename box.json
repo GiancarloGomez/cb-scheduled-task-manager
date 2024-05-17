@@ -1,0 +1,25 @@
+{
+    "name":"Scheduled Task Manager",
+    "slug":"scheduled-task-manager",
+    "version":"1.0.0",
+    "author":"Giancarlo Gomez <giancarlo.gomez@gmail.com>",
+    "description":"A simple UI to view and manage your ColdBox Scheduled Tasks",
+    "type":"modules",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/GiancarloGomez/cb-scheduled-task-manager"
+    },
+    "ignore":[
+        "**/.*",
+        "/test/",
+        "/tests/"
+    ],
+    "license":[
+        {
+            "type":"MIT",
+            "url":"https://www.tldrlegal.com/license/mit-license"
+        }
+    ],
+    "location":"ForgeboxStorage",
+    "private":false
+}
