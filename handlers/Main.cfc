@@ -133,34 +133,34 @@ component extends="coldbox.system.EventHandler" {
 				task = _scheduler.getTaskRecord( taskName );
 
 				obj  = {
-					id               : moduleName &
+					"id"               : moduleName &
 										( len(task.task.getGroup()) ? "." & task.task.getGroup() : "" ) &
 										"." & task.task.getName(),
-					group            : task.task.getGroup(),
-					label            : task.task.getName(),
-					module           : moduleName,
-					name             : taskName,
-					executor         : executorName,
-					debugEnabled     : task.task.getDebug(),
-					disabled         : task.task.isDisabled(),
-					constrained      : task.task.isConstrained(),
-					dayOfTheWeek     : task.task.getDayOfTheWeek(),
-					dayOfTheMonth    : task.task.getDayOfTheMonth(),
-					firstBusinessDay : task.task.getFirstBusinessDay(),
-					lastBusinessDay  : task.task.getLastBusinessDay(),
-					annually         : task.task.getAnnually(),
-					weekends         : task.task.getWeekends(),
-					weekdays         : task.task.getWeekdays(),
-					error            : task.error,
-					errorMessage     : task.errorMessage,
-					period           : task.task.getPeriod(),
-					timeUnit         : task.task.getTimeUnit(),
-					startOn          : task.task.getStartOnDateTime().toString(),
-					endOn            : task.task.getEndOnDateTime().toString(),
-					startTime        : task.task.getStartTime(),
-					endTime          : task.task.getEndTime(),
-					meta             : task.task.getMeta(),
-					canRun           : !task.task.getEnvironments().len() || task.task.getEnvironments().find( getSetting( "environment" ) ) ? true : false
+					"group"            : task.task.getGroup(),
+					"label"            : task.task.getName(),
+					"module"           : moduleName,
+					"name"             : taskName,
+					"executor"         : executorName,
+					"debugEnabled"     : task.task.getDebug(),
+					"disabled"         : task.task.isDisabled(),
+					"constrained"      : task.task.isConstrained(),
+					"dayOfTheWeek"     : task.task.getDayOfTheWeek(),
+					"dayOfTheMonth"    : task.task.getDayOfTheMonth(),
+					"firstBusinessDay" : task.task.getFirstBusinessDay(),
+					"lastBusinessDay"  : task.task.getLastBusinessDay(),
+					"annually"         : task.task.getAnnually(),
+					"weekends"         : task.task.getWeekends(),
+					"weekdays"         : task.task.getWeekdays(),
+					"error"            : task.error,
+					"errorMessage"     : task.errorMessage,
+					"period"           : task.task.getPeriod(),
+					"timeUnit"         : task.task.getTimeUnit(),
+					"startOn"          : task.task.getStartOnDateTime().toString(),
+					"endOn"            : task.task.getEndOnDateTime().toString(),
+					"startTime"        : task.task.getStartTime(),
+					"endTime"          : task.task.getEndTime(),
+					"meta"             : task.task.getMeta(),
+					"canRun"           : !task.task.getEnvironments().len() || task.task.getEnvironments().find( getSetting( "environment" ) ) ? true : false
 				};
 
 				obj.append( task.task.getStats() );
