@@ -5,10 +5,6 @@
 				"lucee" :
 				"acf";
 	prc.version = getModuleConfig( event.getCurrentModule() ).version;
-	prc.entryPoint = prc.isBoxLang ?
-						"/?event=scheduledtaskmanager:" :
-						"/" & event.getModuleEntryPoint() & "/";
-
 </cfscript>
 <cfoutput> <!doctype html>
 <html lang="en" class="#prc.htmlClass ?: ""#">
@@ -34,7 +30,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/javascript.validation@1.8.0/dist/validation.min.js" integrity="sha256-O6Ik/BHp6t0XI2X2slJSTZGxF4sev5/iv01iRExCcE4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.datatables.net/v/bs5/dt-2.0.7/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 	<script>
-		const entryPoint = '#prc.entryPoint#';
+		const entryPoint = '/#event.getModuleEntryPoint()#/';
 	</script>
 	<script src="includes/js/tasks.js?v=#prc.version#"></script>
 </body>

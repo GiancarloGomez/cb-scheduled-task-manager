@@ -9,7 +9,7 @@ component {
 	this.author             = "Giancarlo Gomez @ Fuse Developments, Inc.";
 	this.webURL             = "";
 	this.description        = "A module to manage ColdBox Scheduled Tasks in your applications.";
-	this.version            = "1.1.0";
+	this.version            = "1.1.1";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
 	this.viewParentLookup   = false;
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa

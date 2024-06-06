@@ -18,17 +18,17 @@ component extends="coldbox.system.EventHandler" {
 	}
 
 	function taskDelete( event, rc, prc ){
-		var response = { success:false };
+		var response = { "success":false };
 		var _scheduler = getSchedulerInstance( event, rc );
 
 		if ( event.valueExists( "task" ) && _scheduler.hasTask( rc.task ) ){
 			log.info( "DELETING TASK - " & rc.module & " - " & rc.task );
 			// remove and return the tasks
 			_scheduler.removeTask( rc.task );
-			response.success = true;
-			response.tasks   = setTasks();
+			response["success"] = true;
+			response["tasks"]   = setTasks();
 
-			response.tasks.map( ( task ) => {
+			response["tasks"].map( ( task ) => {
 				task.lastResult = task.lastResult.isPresent() ?
 									task.lastResult.get() :
 									"";
@@ -39,7 +39,7 @@ component extends="coldbox.system.EventHandler" {
 	}
 
 	function taskRun( event, rc, prc ){
-		var response   = { success:false };
+		var response   = { "success":false };
 		var _scheduler = getSchedulerInstance( event, rc );
 
 		try {
@@ -53,17 +53,17 @@ component extends="coldbox.system.EventHandler" {
 				task.run( true );
 
 				// return the task's stats
-				response.stats = duplicate( task.getStats() );
+				response["stats"] = duplicate( task.getStats() );
 
 				// temporarily fixes error in serialization for BoxLang
-				response.stats.delete("lastResult");
+				response["stats"].delete("lastResult");
 
-				response.success = true;
+				response["success"] = true;
 			}
 		}
 		catch ( any e ) {
 			log.error( e.message );
-			response.error = e;
+			response["error"] = e;
 		}
 
 		event.renderData( data=response, type="json" );
@@ -71,22 +71,22 @@ component extends="coldbox.system.EventHandler" {
 
 	function taskUpdate( event, rc, prc ){
 
-		var response   = { success:false };
+		var response   = { "success":false };
 		var _scheduler = getSchedulerInstance( event, rc );
 
 		try {
 
 			if ( event.valueExists( "task" ) && _scheduler.hasTask( rc.task ) ){
-				response.disabled = ( rc.status ?: "" ) == "on" ? true : false;
+				response["disabled"] = ( rc.status ?: "" ) == "on" ? true : false;
 
-				log.info( "UPDATING TASK - " & ( response.disabled ? "Disabling " : "Enabling " ) & rc.module & " - " & rc.task );
+				log.info( "UPDATING TASK - " & ( response["disabled"] ? "Disabling " : "Enabling " ) & rc.module & " - " & rc.task );
 
 				var task = _scheduler.getTaskRecord( rc.task ).task;
 
 				// if the status comes as "on" then disable the task
-				response.success = true;
+				response["success"] = true;
 
-				if ( response.disabled )
+				if ( response["disabled"] )
 					task.disable();
 				else
 					task.enable();
@@ -94,12 +94,12 @@ component extends="coldbox.system.EventHandler" {
 				if ( !task.getScheduled() && !task.isDisabled() )
 					task.start();
 
-				response.scheduled = task.getScheduled();
+				response["scheduled"] = task.getScheduled();
 			}
 		}
 		catch ( any e ) {
 			log.error( e.message );
-			response.error = e;
+			response["error"] = e;
 		}
 
 		event.renderData( data=response, type="json" );
