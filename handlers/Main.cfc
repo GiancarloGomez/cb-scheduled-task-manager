@@ -15,6 +15,7 @@ component extends="coldbox.system.EventHandler" {
 								task.lastResult.get() :
 								"";
 		});
+		event.setView( "main/index" );
 	}
 
 	function taskDelete( event, rc, prc ){
